@@ -8,8 +8,6 @@ const Reader = require('./lib/reader.js');
 var config = require('./lib/config.js')('config.ini').config;
 
 
-console.log(config);
-
 var reader = new Reader(config);
 
 var invoke = function(filepath) {
