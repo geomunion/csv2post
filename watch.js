@@ -8,7 +8,7 @@ const Reader = require('./lib/reader.js');
 var config = require('./lib/config.js')('config.ini').config;
 
 
-// console.log(config);
+console.log(config);
 
 var reader = new Reader(config);
 
@@ -20,8 +20,13 @@ var invoke = function(filepath) {
     }
 }
 
-//var watcher = sane('path/to/dir', {glob: ['**/*.js', '**/*.css']});
-var watcher = sane(config.importDir, {glob: config.watcher.file});
+var files = [];
+for (var i in config.watcher.files) {
+    files.push(config.watcher.files[i]);
+}
+// console.log(files);
+// var watcher = sane('path/to/dir', {glob: ['**/*.js', '**/*.css']});
+var watcher = sane(config.watcher.baseDir, {glob: files});
 
 watcher.on('ready', function () { console.log('ready') });
 
