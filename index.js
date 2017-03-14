@@ -7,4 +7,4 @@ var config = require('./lib/config.js')('config.ini').config;
 
 var reader = new Reader(config);
 
-reader.load(config.filepath);
+reader.load(config.filepath, config.type);
